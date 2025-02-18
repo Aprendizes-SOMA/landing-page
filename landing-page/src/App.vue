@@ -128,9 +128,9 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: justify;
-  max-width: 90vw;
+  max-width: 75vw;
   color: white;
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   line-height: 1.5;
   word-wrap: break-word; 
   overflow-wrap: break-word;
