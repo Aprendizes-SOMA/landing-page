@@ -11,14 +11,12 @@
       </div>
 
       <div class="videoWrapper">
-    <iframe 
-        src="https://www.youtube.com/embed/JvXzxdRNqQM?rel=0&modestbranding=1&showinfo=0"
-        title="SOMA Institucional"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
-</div>
+        <iframe src="https://www.youtube.com/embed/JvXzxdRNqQM?rel=0&modestbranding=1&showinfo=0"
+          title="SOMA Institucional" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
 
 
 
@@ -105,25 +103,23 @@ export default {
 
 
 .videoWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 674px; 
-    margin: 0 auto;
-    padding-bottom: 25%; 
-    height: 0;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 674px;
+  margin: 0 auto;
+  padding-bottom: 25%;
+  height: 0;
+  overflow: hidden;
 }
 
 .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
-
-
 
 
 @media (max-width: 768px) {
@@ -133,15 +129,23 @@ export default {
   }
 
   .textHome {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .logo {
     width: 200px;
   }
 
-  .videoContainer {
-    max-width: 100%;
+  .videoWrapper {
+    width: 50%;
+    padding-bottom: 30%;
+  }
+}
+
+@media (min-width: 8820px) and (max-width: 1180px) {
+.videoWrapper {
+    width: 70%;
+    padding-bottom: 50%;
   }
 }
 </style>
