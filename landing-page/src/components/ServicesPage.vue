@@ -1,30 +1,33 @@
 <template>
   <div class="services-page">
-
     <nav class="services-tabs">
-      <button v-for="(tab, index) in tabs" :key="index" :class="['tab-button', { active: activeTab === tab.name }]"
+      <button 
+        v-for="(tab, index) in tabs" 
+        :key="index" 
+        :class="['tab-button', { active: activeTab === tab.name }]"
         @click="activeTab = tab.name">
         {{ tab.title }}
       </button>
     </nav>
-
     <section class="services-content">
-      <div v-for="(tab, index) in tabs" :key="index" class="tab-content" :class="{ active: activeTab === tab.name }">
-        <div v-if="tab.name === 'pavimentacao'" class="images-container">
-          <img v-for="(image, i) in tab.images" :key="i" :src="image" :alt="tab.alt" class="pavimentacao-image" />
-        </div>
-        <div v-else>
-          <img :src="tab.image" :alt="tab.alt" />
-        </div>
-        <div class="description">
-          <p class="text">{{ tab.description }}</p>
+      <div 
+        v-for="(tab, index) in tabs" 
+        :key="index" 
+        class="tab-content" 
+        :class="{ active: activeTab === tab.name }">
+        <div class="content-container">
+          <img 
+            :src="tab.name === 'pavimentacao' ? tab.images[0] : tab.image" 
+            :alt="tab.alt" 
+            :class="['single-image', { 'adutora-image': tab.name === 'adutora' }]" />
+          <div class="description">
+            <p class="text">{{ tab.description }}</p>
+          </div>
         </div>
       </div>
     </section>
-
   </div>
 </template>
-
 
 <script>
 export default {
@@ -67,7 +70,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .services-page {
   color: #ffffff;
@@ -96,7 +98,6 @@ export default {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: bold;
-  position: relative;
   transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
@@ -112,13 +113,10 @@ export default {
   left: 0;
   right: 0;
   height: 3px;
-  background-color: #ffa500;
+ 
   border-radius: 2px;
 }
 
-.tab-button:hover {
-  color: #ffa500;
-}
 
 .services-content {
   display: flex;
@@ -132,7 +130,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: center; 
+  align-items: center;
   height: auto;
   width: 100%;
   padding: 0;
@@ -144,158 +142,50 @@ export default {
   left: 0;
 }
 
-
 .tab-content.active {
   opacity: 1;
   transform: translateX(0);
   position: relative;
 }
 
-.images-container {
+.content-container {
   display: flex;
-  justify-content: center;
-  gap: 10px; 
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
 }
 
-.pavimentacao-image {
-  max-width: auto;
-  max-height: 244px;
+.single-image {
+  max-width: 400px;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
 }
 
-.tab-content img {
-  width: auto;
-  height: 244px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.adutora-image {
+  max-width: 400px; 
 }
 
 .description {
-  margin-top: 1rem;
-  text-align: center;
+  flex: 1;
+  text-align: left;
+  margin-top: -10px;
 }
 
 .text {
   color: white;
-  font-size: 1.2rem;
-  text-align: justify;
-  margin: 0;
+  font-size: 1.07rem;
+  line-height: 1.6;
+  margin: 1%;
 }
 
 @media (max-width: 1024px) {
-  .services-page {
-    width: 90%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .services-tabs {
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    margin-bottom: 1rem;
-  }
-
-  .tab-button {
-    font-size: 1.2rem;
-    padding: 0.4rem 1rem;
-    border-radius: 8px;
-  }
-
-  .tab-button.active::after {
-    height: 3px;
-    background-color: #ffa500;
-  }
-
-  .services-content {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .tab-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .tab-content img {
-    width: 300px;
-    height: 200px;
-  }
-
-  .text {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-  }
-
-  .description {
-    width: 60%;
-  }
-
-  .images-container {
+  .content-container {
     flex-direction: column;
     align-items: center;
   }
-
-  .pavimentacao-image {
-    width: 80%;
-  }
-}
-
-@media (max-width: 480px) {
-  .services-tabs {
-    display: flex;
-    justify-content: space-evenly;
-    width: 50%;
-    margin-bottom: 1rem;
-  }
-
-  .tab-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 65%;
-    padding: 1rem;
-  }
-
-  .tab-button {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .images-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .pavimentacao-image {
-    max-width: 90%;
-    max-height: auto;
-  }
-
-  .tab-content img {
-    max-width: 90%;
-    height: auto;
-  }
-
-  .description {
-    width: 100%;
-    margin-top: 1rem;
-    text-align: center;
+  .single-image, .adutora-image {
+    max-width: 100%;
   }
 }
 </style>
