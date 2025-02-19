@@ -4,7 +4,7 @@
       <button 
         v-for="(tab, index) in tabs" 
         :key="index" 
-        :class="['tab-button', { active: activeTab === tab.name }]"
+        :class="['tab-button', { active: activeTab === tab.name }, tab.name]" 
         @click="activeTab = tab.name">
         {{ tab.title }}
       </button>
@@ -70,6 +70,8 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 .services-page {
   color: #ffffff;
@@ -85,9 +87,10 @@ export default {
 .services-tabs {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* Ajuste para aumentar o espaçamento */
   padding: 1rem 0;
-  gap: 10px;
+  gap: 10px; /* Espaçamento entre os botões */
+  flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
 }
 
 .tab-button {
@@ -99,6 +102,15 @@ export default {
   cursor: pointer;
   font-weight: bold;
   transition: color 0.3s ease, font-weight 0.3s ease;
+  position: relative; 
+  white-space: nowrap; 
+  min-width: 120px; /* Largura mínima para evitar que os botões fiquem muito estreitos */
+  text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+/* Efeito de hover para todos os botões */
+.tab-button:hover {
+  color: orange; /* Altera a cor do texto para laranja no hover */
 }
 
 .tab-button.active {
@@ -110,13 +122,51 @@ export default {
   content: "";
   position: absolute;
   bottom: -5px;
-  left: 0;
-  right: 0;
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 90%;
   height: 3px;
- 
+  background-color: orange;
   border-radius: 2px;
 }
 
+
+@media (max-width: 768px) {
+  .tab-button.habitacional {
+    white-space: normal; 
+    line-height: 1.2; 
+    font-size: 0.9rem; 
+    padding: 0.4rem 0.6rem; 
+  }
+
+  
+  .tab-button.habitacional:hover {
+    color: orange; 
+  }
+}
+
+@media (max-width: 768px) {
+  .tab-button {
+    font-size: 1rem; 
+    padding: 0.4rem 0.8rem; 
+  }
+
+  .tab-button.active::after {
+    width: 100%; 
+    height: 2px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+    font-size: 0.8rem; 
+    padding: 0.3rem 0.6rem; 
+  }
+
+  .services-tabs {
+    gap: 5px; 
+  }
+}
 
 .services-content {
   display: flex;
@@ -153,6 +203,7 @@ export default {
   align-items: flex-start;
   gap: 20px;
   width: 100%;
+  margin-top: 20px; /* Adiciona mais espaço acima do conteúdo */
 }
 
 .single-image {
@@ -163,7 +214,7 @@ export default {
 }
 
 .adutora-image {
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 .description {
@@ -184,8 +235,44 @@ export default {
     flex-direction: column;
     align-items: center;
   }
-  .single-image, .adutora-image {
-    max-width: 100%;
+
+  .single-image,
+  .adutora-image {
+    max-width: 50%;
   }
+
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Para centralizar os textos */
+  }
+
+  .description {
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .services-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tab-button {
+    flex: 0.1%;
+    min-width: 80px;
+  }
+}
+
+.description {
+  flex: 1;
+  text-align: center; /* Centraliza no mobile */
+  max-width: 50%; /* Evita que fique muito estreito */
+  padding: 15px; /* Adiciona espaço interno */
+}
+
+.text {
+  font-size: 1rem; /* Aumenta o tamanho do texto */
+  line-height: 1.3; /* Dá mais espaçamento entre as linhas */
+  text-align: justify; /* Justifica o texto para melhor leitura */
+  margin: 2px auto; /* Centraliza e adiciona espaçamento */
 }
 </style>
