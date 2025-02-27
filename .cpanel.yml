@@ -1,6 +1,7 @@
 ---
 deployment:
   tasks:
+    - export DEPLOYPATH=/home/somapiauic/public_html/landing-page-soma
     - npm install  # Instala as dependências
     - npm run build  # Gera os arquivos estáticos na pasta dist/
-    - /bin/cp -R dist/* /home/somapiauic/public_html/landing-page-soma # Copia os arquivos para a pasta public_html/landing-page-soma
+    - /bin/cp -R dist/* $DEPLOYPATH
