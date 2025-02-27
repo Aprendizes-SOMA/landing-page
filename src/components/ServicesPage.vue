@@ -238,7 +238,7 @@ export default {
 
   .single-image,
   .adutora-image {
-    max-width: 50%;
+    max-width: 45%;
   }
 
   .content-container {
