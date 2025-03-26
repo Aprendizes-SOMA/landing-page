@@ -47,6 +47,7 @@
           <li><a href="#services">Serviços</a></li>
           <li><a href="#mainworks">Principais Obras</a></li>
           <li><a href="#">Verificação</a></li>
+          <li><a href="#client-area">Área do Cliente</a></li>
           <li class="highlight"><a href="mailto:recursos.humanos@somapiaui.com.br">Trabalhe Conosco</a></li>
         </ul>
       </nav>
@@ -68,7 +69,7 @@ export default {
     },
     closeMenuOnScroll() {
       if (this.menuOpen) {
-        this.menuOpen = false; 
+        this.menuOpen = false;
       }
     },
   },
@@ -212,7 +213,7 @@ export default {
   cursor: pointer;
 }
 
-.hamburger{
+.hamburger {
   display: none;
 }
 
@@ -237,7 +238,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-
   .hamburger {
     display: flex;
   }
@@ -252,7 +252,6 @@ export default {
     color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 0.7s ease-in-out;
-    /* Animação suave */
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -308,12 +307,10 @@ export default {
 }
 
 @media (min-width: 849px) and (max-width: 1200px) {
-  /* Botão hambúrguer */
   .hamburger {
     display: flex;
   }
 
-  /* Menu lateral (sidebar) */
   .nav {
     position: fixed;
     top: 0;
@@ -324,7 +321,6 @@ export default {
     color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 0.7s ease-in-out;
-    /* Animação suave */
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -335,7 +331,6 @@ export default {
     right: 0;
   }
 
-  /* Estilo dos links */
   .nav ul {
     list-style: none;
     padding: 0;

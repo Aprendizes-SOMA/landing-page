@@ -62,6 +62,12 @@
         </div>
       </section>
 
+     
+      <section class="client-area" id="client-area">
+        <CustomTitle msg="Área do Cliente" />
+        <ClientArea />
+      </section>
+
       <AppFooter />
     </div>
   </div>
@@ -77,6 +83,7 @@ import CustomCard from './components/CustomCard.vue';
 import ServicesPage from './components/ServicesPage.vue';
 import AppFooter from './components/AppFooter.vue';
 import MainWorks from './components/MainWorks.vue';
+import ClientArea from './components/ClientArea.vue'; // Importando o novo componente
 
 export default {
   name: 'App',
@@ -90,6 +97,7 @@ export default {
     ServicesPage,
     AppFooter,
     MainWorks,
+    ClientArea, 
   },
 };
 </script>
@@ -115,7 +123,8 @@ export default {
 .about,
 .services,
 .mainworks,
-.strategy {
+.strategy,
+.client-area { 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,7 +182,6 @@ export default {
   .home {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('@/assets/images/ImageMobile.webp');
     background-size: cover;
-    height: 100vh;
     height: 100vh;
     width: 100%;
     display: flex;
