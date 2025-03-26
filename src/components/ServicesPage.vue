@@ -40,7 +40,7 @@ export default {
           name: "pavimentacao",
           title: "Pavimentação",
           images: [
-            require("../../public/images/pavimentacao.svg"),
+            require("@/assets/images/pavimentacao.svg"),
             require("@/assets/images/img1.webp"),
             require("@/assets/images/img2.webp"),
           ],

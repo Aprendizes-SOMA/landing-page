@@ -43,11 +43,17 @@ export default {
   data() {
     return {
       images: [
-        require("@/assets/images/img1.webp"),
-        require("@/assets/images/img2.webp"),
-        require("@/assets/images/img3.webp"),
-        require("@/assets/images/img4.webp"),
-        require("@/assets/images/img6.webp"),
+        require("@/assets/images/estrada1.webp"),
+        require("@/assets/images/estrada2.webp"),
+        require("@/assets/images/Estrada3.webp"),
+        require("@/assets/images/Estrada4.webp"),
+        require("@/assets/images/Estrada5.webp"),
+        require("@/assets/images/Estrada6.webp"),
+        require("@/assets/images/Estrada7.webp"),
+        require("@/assets/images/Estrada8.webp"),
+        require("@/assets/images/FranciscoAyres.webp"),
+        require("@/assets/images/terraplanagem.webp"),
+        require("@/assets/images/terraplanagem2.webp"),
       ],
       currentIndex: 0,
       scale: 1,
