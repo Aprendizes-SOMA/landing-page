@@ -1,7 +1,7 @@
 <template>
     <section class="client-area-wrapper">
       <p class="client-area-description">
-        Nesta área exclusiva, você pode emitir a segunda via do seu boleto de obra informando seu CPF ou CNPJ. Acesse com segurança e mantenha seus pagamentos em dia.
+        Nesta área exclusiva, você pode emitir a segunda via do seu boleto informando seu CPF ou CNPJ. Acesse com segurança e mantenha seus pagamentos em dia.
       </p>
       <a 
         class="client-area-button" 
