@@ -1,7 +1,7 @@
 const { defineConfig } = require('@vue/cli-service');
 const webpack = require('webpack');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin'); // Corrigido aqui
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin'); 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 const glob = require('glob-all');
@@ -85,4 +85,5 @@ module.exports = defineConfig({
 
   transpileDependencies: true,
   productionSourceMap: true,
+  publicPath: './',
 });
