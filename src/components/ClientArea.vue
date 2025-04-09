@@ -45,15 +45,16 @@ export default {
 .client-area-button {
   background-color: #fd8700;
   color: white;
-  padding: 12px 30px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  font-size: 0.9rem;
   text-decoration: none;
   border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: inline-block;
-  max-width: 140px;
+  max-width: 110px;
   width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .client-area-button:hover {
