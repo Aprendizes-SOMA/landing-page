@@ -9,7 +9,7 @@
 
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="/image.svg" alt="Logo" class="logo" />
+        <img src="@/assets/images/image.svg" alt="Logo" class="logo" />
       </div>
 
       <div class="footer-content">
