@@ -20,18 +20,18 @@
 
       <section class="strategy" id="strategy">
         <div class="icons-container">
-          <CustomIcon iconPath="/Vector.svg" primaryText="+10" secondaryText="Clientes atendidos"
+          <CustomIcon iconPath="./Vector.svg" primaryText="+10" secondaryText="Clientes atendidos"
             altText="Ícone de Cliente" />
-          <CustomIcon iconPath="/Vector(1).svg" primaryText="+100" secondaryText="Construções feitas"
+          <CustomIcon iconPath="./Vector(1).svg" primaryText="+100" secondaryText="Construções feitas"
             altText="Ícone de Construções" />
         </div>
         <CustomTitle msg="Identidade estratégica" />
         <div class="cards-section">
-          <CustomCard iconPath="/Vector(2).svg" subtitle="Missão"
+          <CustomCard iconPath="./Vector(2).svg" subtitle="Missão"
             text="Fornecer soluções de engenharia com qualidade, compromisso socioambiental e segurança." />
-          <CustomCard iconPath="/Vector(3).svg" subtitle="Visão"
+          <CustomCard iconPath="./Vector(3).svg" subtitle="Visão"
             text="Inovar na área de infraestrutura de transportes com alto desempenho e melhoria contínua." />
-          <CustomCard iconPath="/Vector(4).svg" subtitle="Valores"
+          <CustomCard iconPath="./Vector(4).svg" subtitle="Valores"
             text="Compromisso com resultados eficientes, segurança, respeito socioambiental, confiança e valorização profissional." />
         </div>
       </section>
@@ -83,7 +83,7 @@ import CustomCard from './components/CustomCard.vue';
 import ServicesPage from './components/ServicesPage.vue';
 import AppFooter from './components/AppFooter.vue';
 import MainWorks from './components/MainWorks.vue';
-import ClientArea from './components/ClientArea.vue'; // Importando o novo componente
+import ClientArea from './components/ClientArea.vue'; 
 
 export default {
   name: 'App',
