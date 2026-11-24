@@ -48,6 +48,7 @@
           <li><a href="#mainworks">Principais Obras</a></li>
           <li><a href="#">Verificação</a></li>
           <li><a href="#client-area">Área do Cliente</a></li>
+          <li><a href="./ouvidoria/">Ouvidoria</a></li>
           <li class="highlight"><a href="mailto:recursos.humanos@somapiaui.com.br">Trabalhe Conosco</a></li>
         </ul>
       </nav>
