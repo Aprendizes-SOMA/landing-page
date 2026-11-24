@@ -6,7 +6,7 @@ $REMETENTE = 'site@somapiaui.com.br';        // precisa ser do domínio da empre
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   header('Location: ./');
-  exit;
+  exit; #kkskskksksksksk 
 }
 
 date_default_timezone_set('America/Fortaleza');
