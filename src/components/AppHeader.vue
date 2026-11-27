@@ -36,7 +36,6 @@
       </button>
       <nav class="nav" :class="{ show: menuOpen }">
         <ul>
-          <li><a href="#home">Início</a></li>
           <li class="dropdown">
             <a href="#about">Sobre</a>
             <ul class="dropdown-menu">
@@ -48,7 +47,7 @@
           <li><a href="#mainworks">Principais Obras</a></li>
           <li><a href="#">Verificação</a></li>
           <li><a href="#client-area">Área do Cliente</a></li>
-          <li><a href="./ouvidoria/">Ouvidoria</a></li>
+          <li class="highlight"><a href="./ouvidoria/">Ouvidoria</a></li>
           <li class="highlight"><a href="mailto:recursos.humanos@somapiaui.com.br">Trabalhe Conosco</a></li>
         </ul>
       </nav>
@@ -156,6 +155,11 @@ export default {
   background-color: #FD8700;
   color: white;
   transition: 0.5s;
+}
+
+/* Ouvidoria e Trabalhe Conosco lado a lado: aproxima os dois botões */
+.nav ul li.highlight + li.highlight {
+  margin-left: -0.5rem;
 }
 
 .nav ul li.dropdown {
@@ -307,7 +311,7 @@ export default {
   }
 }
 
-@media (min-width: 849px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
   .hamburger {
     display: flex;
   }

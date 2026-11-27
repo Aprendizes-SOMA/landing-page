@@ -1,0 +1,19 @@
+# Ouvidoria: cabeçalhos de segurança e bloqueio de arquivos internos (só nesta pasta).
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set X-Frame-Options "DENY"
+  Header always set Cache-Control "no-store"
+</IfModule>
+
+# Bloqueia arquivos ocultos (.htaccess, .user.ini, ...) e qualquer .ini
+<FilesMatch "(^\.|\.ini$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
