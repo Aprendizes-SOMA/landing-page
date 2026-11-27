@@ -3,119 +3,287 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ouvidoria - Construtora SOMA</title>
+  <meta name="robots" content="noindex">
+  <title>Ouvidoria - Construtora e Incorporadora SOMA</title>
+  <meta name="description" content="Canal seguro e independente da SOMA para manifestações sobre o Código de Ética e Conduta. Pode ser anônimo.">
   <link rel="icon" href="../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0; background: #1f1f1f; color: #fff;
-      font-family: 'Poppins', Arial, sans-serif;
+      background: #1f1f1f; color: #fff;
+      font-family: 'Poppins', Arial, sans-serif; line-height: 1.6;
+      min-height: 100vh; display: flex; flex-direction: column;
     }
+    a { color: #FD8700; }
+    a:focus-visible, button:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid #FD8700; outline-offset: 2px;
+    }
+
+    /* Cabeçalho (mesmo do site: #333 com o símbolo S/A) */
     .topo {
-      background: #333; padding: 14px 24px;
+      background: #333333; box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      height: 100px;
+    }
+    .topo .container {
+      max-width: 1200px; height: 100%; margin: 0 auto; padding: 0 20px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .topo img { height: 40px; width: auto; display: block; }
-    .topo a { color: #fff; text-decoration: none; font-weight: 500; transition: color .3s; }
-    .topo a:hover { color: #FD8700; }
-
-    .banner {
-      text-align: center; padding: 60px 20px 40px;
-      border-bottom: 3px solid #FD8700;
+    .topo svg { height: 75px; width: auto; display: block; }
+    .topo .cor1 { fill: #fff; }
+    .topo .cor2 { fill: #FD8700; }
+    .voltar {
+      color: #FD8700; text-decoration: none; font-weight: 700;
+      border: 2px solid #FD8700; border-radius: 5px; padding: .6rem .8rem;
+      transition: background-color .5s, color .5s; white-space: nowrap;
     }
-    .banner h1 { margin: 0; font-size: 2.4rem; letter-spacing: 4px; color: #FD8700; }
-    .banner p { margin: 8px 0 0; font-size: 1.1rem; font-weight: 500; letter-spacing: 2px; }
+    .voltar:hover { background: #FD8700; color: #fff; }
 
-    .conteudo { max-width: 700px; margin: 0 auto; padding: 40px 20px 60px; }
-    .intro { line-height: 1.7; text-align: justify; margin: 0 0 20px; }
-    .anonimo {
-      background: #2a2a2a; border-left: 4px solid #FD8700;
-      padding: 14px 18px; border-radius: 6px; margin-bottom: 32px; line-height: 1.6;
+    /* Faixa de título no estilo dos títulos de seção do site */
+    .banner { text-align: center; padding: 48px 20px 8px; }
+    .faixa {
+      display: inline-block; min-width: min(420px, 90vw);
+      background: rgba(255,136,0,.784); color: #fff; border-radius: 5px;
+      box-shadow: 4px 4px 20px rgba(251,251,251,.208);
+      padding: 18px 32px; margin: 0;
+      font-size: 1.6rem; font-weight: 700; letter-spacing: 4px;
     }
+    .banner p { margin: 16px 0 0; font-weight: 500; letter-spacing: 2px; color: #ddd; }
+
+    main { flex: 1; width: 100%; max-width: 720px; margin: 0 auto; padding: 28px 20px 56px; }
+    .intro { margin: 0 0 16px; text-align: justify; }
+    .destaque {
+      background: #2a2a2a; border-left: 4px solid #FD8700; border-radius: 6px;
+      padding: 14px 18px; margin: 0 0 12px;
+    }
+    .privacidade { color: #bbb; font-size: .9rem; margin: 0 0 28px; }
+
+    /* Avisos de sucesso/erro */
+    .aviso { display: none; border-radius: 8px; padding: 16px 18px; margin: 0 0 24px; }
+    .aviso h2 { margin: 0 0 4px; font-size: 1.15rem; }
+    .aviso p { margin: 0; }
+    .aviso.ok { background: #20301f; border: 1px solid #4caf50; }
+    .aviso.ok h2 { color: #7bd17f; }
+    .aviso.erro { background: #3a2020; border: 1px solid #e57373; }
+    .aviso.erro h2 { color: #ff9a9a; }
+    .aviso.visivel, .aviso:target { display: block; }
+    .protocolo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; color: #FD8700; white-space: nowrap; }
 
     form {
-      background: #2a2a2a; padding: 28px 24px; border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,.4);
+      background: #2a2a2a; border-radius: 12px; padding: 28px 24px;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
     }
+    .campo { margin: 0 0 22px; }
     label { display: block; margin: 0 0 8px; font-weight: 600; }
-    label + textarea { margin-bottom: 24px; }
-    textarea {
+    .opcional { font-weight: 400; color: #aaa; font-size: .9rem; }
+    textarea, select {
       width: 100%; padding: 12px; border-radius: 6px;
-      border: 1px solid #444; background: #1f1f1f; color: #fff;
-      font: inherit; resize: vertical;
+      border: 1px solid #555; background: #1f1f1f; color: #fff;
+      font: inherit;
     }
-    textarea::placeholder { color: #888; }
+    textarea { resize: vertical; }
+    textarea::placeholder { color: #8a8a8a; }
     #mensagem { min-height: 180px; }
     #local { min-height: 80px; }
-    textarea:focus { outline: 2px solid #FD8700; border-color: transparent; }
-    .escondido { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    button {
-      width: 100%; padding: 14px; border: none; border-radius: 6px;
-      background: #FD8700; color: #1f1f1f; font: inherit; font-weight: 700;
-      font-size: 1rem; cursor: pointer; transition: background .3s;
-    }
-    button:hover { background: #ff9a26; }
-    button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .ajuda { display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; font-size: .85rem; color: #aaa; }
+    .contador.alerta { color: #ff9a9a; }
 
-    footer {
-      text-align: center; padding: 20px; color: #999; font-size: .85rem;
-      border-top: 1px solid #333;
+    /* Armadilha anti-robô: fora da tela, invisível para pessoas e leitores de tela */
+    .armadilha { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+    button {
+      width: 100%; padding: 14px; border: 2px solid #FD8700; border-radius: 6px;
+      background: #FD8700; color: #1f1f1f; font: inherit; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: background-color .3s, color .3s;
     }
+    button:hover { background: transparent; color: #FD8700; }
+    button[disabled] { opacity: .6; cursor: wait; }
+
+    /* Rodapé coerente com o do site */
+    footer { width: 100%; padding: 0 20px 30px; }
+    .rodape { max-width: 1200px; margin: 0 auto; }
+    .rodape .linha { height: 2px; background: #fff; margin-bottom: 20px; }
+    .rodape .conteudo { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .rodape img { width: 120px; height: auto; display: block; }
+    .rodape p { margin: 0; font-size: .8rem; color: #ccc; }
+    .rodape a { color: #fff; text-decoration: none; }
+    .rodape a:hover { color: #FD8700; }
 
     @media (max-width: 600px) {
-      .topo { padding: 12px 16px; }
-      .topo img { height: 32px; }
-      .banner { padding: 40px 16px 30px; }
-      .banner h1 { font-size: 1.8rem; }
+      .topo { height: 80px; }
+      .topo svg { height: 56px; }
+      .voltar { padding: .45rem .6rem; font-size: .9rem; }
+      .banner { padding-top: 32px; }
+      .faixa { font-size: 1.2rem; padding: 14px 20px; letter-spacing: 3px; }
       .banner p { font-size: .9rem; letter-spacing: 1px; }
-      .conteudo { padding: 30px 16px 40px; }
       .intro { text-align: left; }
       form { padding: 20px 16px; }
+      .rodape .conteudo { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
   <header class="topo">
-    <a href="../" aria-label="Página inicial"><img src="../image.svg" alt="Construtora SOMA"></a>
-    <a href="../">Página inicial</a>
+    <div class="container">
+      <a href="../" aria-label="Construtora SOMA - página inicial">
+        <svg viewBox="0 0 1000 400" aria-hidden="true" focusable="false">
+          <path class="cor1" d="M241.74,123.57l-12.09,39.87c0,0-19.51-8.4-38.34-3.68c0,0-13.32,4.79-7.74,13.98c5.57,9.19,39.28,11.45,39.28,11.45s-26.47,31.45-29.45,37.36c0,0-42.55-5.87-54.3-22.55c0,0-6.21-6.21-9.02-21.62c0,0-4.43-34.38,25.62-49.28S216.12,117.45,241.74,123.57z"/>
+          <path class="cor1" d="M165.26,272.46c0,0,18.05-35.49,20.81-37.39c0,0-22.65-4.1-35.74-13.71l-17.85,38.47C132.47,259.83,146.85,269.3,165.26,272.46z"/>
+          <polygon class="cor1" points="275.64,277.02 346.17,117.96 398.51,117.96 468.48,276.78 414.1,276.77 372.42,169.88 370.64,169.87 370.24,169.88 329.49,277.02"/>
+          <polygon class="cor2" points="372.32,194.02 334.37,298.98 410.78,299.11"/>
+          <path class="cor2" d="M291.67,124.34c0,0-82.31,47.62-130.95,157.21c0,0,12.09,2.74,17.83,2.53S179.68,240,291.67,124.34z"/>
+          <polygon class="cor2" points="317.7,109.45 289.45,136.43 294.3,139.32"/>
+          <polygon class="cor2" points="286.37,139.32 268.37,159.51 276.26,163.76 291.67,142.34"/>
+          <polygon class="cor2" points="264.72,164.38 242.68,192.64 254.3,199.32 273.57,168.6"/>
+          <path class="cor2" d="M239.36,198.64c0,0-19.36,29.28-20.77,33.62l16.55,5.13c0,0,10.53-25.85,16.66-32.74L239.36,198.64z"/>
+          <path class="cor2" d="M312.83,124.38c0,0-36.49,61.83-50.96,133.15c0,0-8.34,12.94-21.62,18.04S281.62,157.87,312.83,124.38z"/>
+          <path class="cor2" d="M216.13,238.53c0,0-17.11,31.47-18.38,46.21c0,0,13.72,1.09,22.66-2.23c0,0,1.53-19.79,12.57-38.49L216.13,238.53z"/>
+        </svg>
+      </a>
+      <a class="voltar" href="../">Voltar ao site</a>
+    </div>
   </header>
 
   <section class="banner">
-    <h1>OUVIDORIA</h1>
+    <h1 class="faixa">OUVIDORIA</h1>
     <p>CONSTRUTORA E INCORPORADORA SOMA LTDA</p>
   </section>
 
-  <main class="conteudo">
+  <main>
     <p class="intro">
       Este é um canal seguro e independente para registro de manifestações de
-      violação ou risco de violação ao Código de Ética e Conduta, Procedimentos
-      Internos ou de Segurança da Informação.
+      violação ou risco de violação ao Código de Ética e Conduta, aos procedimentos
+      internos ou à segurança da informação.
     </p>
-    <div class="anonimo">
-      Fique tranquilo em relação à sua manifestação.
-      Ela pode ser enviada de forma <strong>anônima</strong>.
+    <p class="destaque">
+      Fique tranquilo em relação à sua manifestação: ela pode ser enviada de forma
+      <strong>anônima</strong>.
+    </p>
+    <p class="privacidade">
+      Não pedimos dados pessoais e não armazenamos o seu endereço IP. Se não quiser
+      se identificar, evite escrever seu nome ou contato na mensagem.
+    </p>
+
+    <!-- Avisos: aparecem via :target (sem JavaScript) e são detalhados pelo script abaixo -->
+    <div id="enviado" class="aviso ok" role="status" aria-live="polite">
+      <h2>Manifestação enviada!</h2>
+      <p>Obrigado por contar conosco. Sua mensagem foi recebida com sigilo.</p>
+      <p id="protocolo-bloco" hidden>Protocolo de referência: <span id="protocolo" class="protocolo"></span></p>
+    </div>
+    <div id="erro" class="aviso erro" role="alert" aria-live="assertive">
+      <h2>Não foi possível enviar</h2>
+      <p id="erro-texto">Confira o formulário e tente novamente.</p>
     </div>
 
-    <form action="enviar.php" method="POST">
-      <label for="mensagem">Conte conosco!</label>
-      <textarea id="mensagem" name="mensagem" maxlength="5000" required
-        placeholder="Deixe sua mensagem"></textarea>
-
-      <label for="local">Se preferir, você pode nos informar a cidade e área de atuação.</label>
-      <textarea id="local" name="local" maxlength="300"></textarea>
-
-      <!-- armadilha anti-robô: pessoas não veem este campo -->
-      <div class="escondido" aria-hidden="true">
-        <input name="site" tabindex="-1" autocomplete="off">
+    <form id="form-ouvidoria" action="enviar.php" method="POST" accept-charset="UTF-8">
+      <div class="campo">
+        <label for="mensagem">Conte conosco!</label>
+        <textarea id="mensagem" name="mensagem" required minlength="20" maxlength="5000"
+          placeholder="Deixe sua mensagem" aria-describedby="mensagem-ajuda"></textarea>
+        <div class="ajuda" id="mensagem-ajuda">
+          <span>Entre 20 e 5000 caracteres.</span>
+          <span class="contador" id="contador" aria-hidden="true">0 / 5000</span>
+        </div>
       </div>
 
-      <button type="submit">Enviar</button>
+      <div class="campo">
+        <label for="estado">Estado <span class="opcional">(opcional)</span></label>
+        <select id="estado" name="estado">
+          <option value="">Prefiro não informar</option>
+          <option value="PI">Piauí</option>
+          <option value="MA">Maranhão</option>
+          <option value="PA">Pará</option>
+          <option value="CE">Ceará</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="local">Se preferir, informe a cidade e a área de atuação <span class="opcional">(opcional)</span></label>
+        <textarea id="local" name="local" maxlength="300" aria-describedby="local-ajuda"></textarea>
+        <div class="ajuda" id="local-ajuda"><span>Até 300 caracteres.</span></div>
+      </div>
+
+      <div class="armadilha" aria-hidden="true">
+        <label for="site">Não preencha este campo</label>
+        <input type="text" id="site" name="site" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" id="enviar">Enviar</button>
     </form>
   </main>
 
-  <footer>Construtora e Incorporadora SOMA Ltda</footer>
+  <footer>
+    <div class="rodape">
+      <div class="linha"></div>
+      <div class="conteudo">
+        <a href="../" aria-label="Página inicial"><img src="../image.svg" alt="SOMA" width="126" height="32"></a>
+        <p>Construtora e Incorporadora SOMA Ltda &middot; Av. Senador Helvídeo Nunes, 2788, Junco, Picos, Piauí</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Mensagens fixas por código: nada vindo da URL é inserido como HTML.
+      var MOTIVOS = {
+        vazia: 'Escreva sua mensagem antes de enviar.',
+        curta: 'A mensagem precisa ter pelo menos 20 caracteres.',
+        longa: 'A mensagem pode ter no máximo 5000 caracteres.',
+        local: 'O campo de cidade e área de atuação pode ter no máximo 300 caracteres.',
+        estado: 'Selecione um estado da lista.',
+        invalido: 'O formulário contém caracteres inválidos. Revise o texto e tente novamente.',
+        limite: 'Muitos envios em pouco tempo. Aguarde alguns minutos e tente novamente.',
+        falha: 'Ocorreu um problema ao registrar sua manifestação. Tente novamente mais tarde.'
+      };
+      // Mostra o aviso e leva o foco até ele (leitores de tela anunciam o resultado).
+      function mostrar(aviso) {
+        aviso.classList.add('visivel');
+        aviso.setAttribute('tabindex', '-1');
+        aviso.focus();
+      }
+      var params = new URLSearchParams(window.location.search);
+      var status = params.get('status');
+      if (status === 'ok') {
+        var ok = document.getElementById('enviado');
+        var prot = params.get('protocolo') || '';
+        if (/^\d{8}-[0-9A-F]{6}$/.test(prot)) {
+          document.getElementById('protocolo').textContent = prot;
+          document.getElementById('protocolo-bloco').hidden = false;
+        }
+        mostrar(ok);
+      } else if (status === 'erro') {
+        var motivo = params.get('motivo');
+        if (Object.prototype.hasOwnProperty.call(MOTIVOS, motivo)) {
+          document.getElementById('erro-texto').textContent = MOTIVOS[motivo];
+        }
+        mostrar(document.getElementById('erro'));
+      }
+
+      var msg = document.getElementById('mensagem');
+      var contador = document.getElementById('contador');
+      function atualizar() {
+        var n = msg.value.length; // mesma contagem do minlength/maxlength
+        contador.textContent = n + ' / 5000';
+        contador.classList.toggle('alerta', n > 0 && n < 20);
+      }
+      msg.addEventListener('input', atualizar);
+      atualizar();
+
+      var botao = document.getElementById('enviar');
+      document.getElementById('form-ouvidoria').addEventListener('submit', function () {
+        botao.disabled = true;
+        botao.textContent = 'Enviando...';
+      });
+      // Ao voltar pelo histórico (bfcache), reativa o botão.
+      window.addEventListener('pageshow', function () {
+        botao.disabled = false;
+        botao.textContent = 'Enviar';
+      });
+    })();
+  </script>
 </body>
 </html>
